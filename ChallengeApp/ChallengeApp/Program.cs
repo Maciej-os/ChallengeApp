@@ -1,33 +1,21 @@
-﻿string name = "Ewa";
-bool woman = true;
-byte age = 31;
+﻿int number = 4566;
+string numberAsString = number.ToString();
 
+char[] letters = numberAsString.ToArray();
+int[] countChars = new int[10];
 
-if (woman)
+for (int i = 0; i < letters.Length; i++)
 {
-    if (age < 30)
-    {
-        Console.WriteLine("Kobieta poniżej 30 lat");
-    }
-    else if (name == "Ewa" && age == 30)
-    {
-        Console.WriteLine("Ewa, lat 30");
-    }
-    else
-    {
-        Console.WriteLine("Brak klasyfikacji");
-    }
+    char a = letters[i];
+    int digit = Convert.ToInt32(a) - Convert.ToInt32('0');
+    countChars[digit]++;
 }
-else
-{
-    if (age < 18)
-    {
-        Console.WriteLine("Niepełnoletni mężczyzna");
-    }
-    else
-    {
-        Console.WriteLine("Brak klasyfikacji");
-    }
 
+Console.WriteLine("Wyniki dla liczby: " + number);
+
+for (int i = 0; i < countChars.Length; i++)
+{
+    Console.WriteLine(i + " => " + countChars[i]);
 }
+
 
