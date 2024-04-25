@@ -83,23 +83,6 @@ namespace ChallengeApp.Tests
             Assert.AreEqual(number1, number2);
         }
 
-        [Test]
-        public void GetUserShouldReturnDifferentObjects()
-        {
-            // arrange
-            var employee1 = GetEmployee("Adam");
-            var employee2 = GetEmployee("Adam");
-
-            //act
-
-
-            //asert
-
-            Assert.AreNotEqual(employee1, employee2);
-        }
-        private Employee GetEmployee(string name)
-        {
-            return new Employee(name);
-        }
+        
     }
 }
