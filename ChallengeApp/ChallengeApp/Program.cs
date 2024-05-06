@@ -17,8 +17,17 @@ while (true)
     {
         break;
     }
+
+    try
+    {
+        employee01.AddGrade(input);
+    }
+
+    catch(Exception e)
+    {
+        Console.WriteLine($"Exception catched: {e.Message}");
+    }
     
-    employee01.AddGrade(input);
 }
 
 var statistic01 = employee01.GetStatistics();
