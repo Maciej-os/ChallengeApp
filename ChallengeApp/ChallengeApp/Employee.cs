@@ -2,7 +2,7 @@
 {
     public class Employee : Person
     {
-        public static string version = "Dzien#12";
+        public static string version = "Dzien#14";
 
         private List<float> grades = new List<float>();
 
