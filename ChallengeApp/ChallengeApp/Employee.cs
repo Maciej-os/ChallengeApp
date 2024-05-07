@@ -1,27 +1,38 @@
-﻿using System;
-using System.Diagnostics;
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
-    public class Employee
+    public class Employee : Person
     {
         public static string version = "Dzien#12";
 
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname)
+        public Employee()
+           : this("No Name")
         {
-            this.Name = name;
-            this.Surname = surname;
 
         }
 
-        public Employee() { }
-       
+        public Employee(string name)
+            : this(name, "No Surname")
+        {
+            
+        }
 
-        public string Name { get; private set; }
+        public Employee(string name, string surname )
+            : base(name, surname, '?')   
+        {
+            
+        }
 
-        public string Surname { get; private set; }
+        public Employee(string name, string surname, char sex)
+            : base(name, surname, sex)
+        {
+
+        }
+
+       // public string Name { get; private set; }
+
+        //public string Surname { get; private set; }
 
         public void AddGrade(float grade)
         {
