@@ -5,8 +5,8 @@ Console.WriteLine("__________________________________");
 Console.WriteLine();
 
 
-var employee01 = new Employee("Adam","Nowak");
-var employee02 = new Employee();
+var employee01 = new Supervisor("Adam","Nowak",'M');
+var employee02 = new Employee("Weronika", "Nowak", 'K');
 
 while (true) 
 {
@@ -39,7 +39,7 @@ Console.WriteLine($"Średnia: {statistic01.Avg:N2}");
 Console.WriteLine($"Min: {statistic01.Min}");
 Console.WriteLine($"Max: {statistic01.Max}");
 Console.WriteLine($"Ocena: {statistic01.AvgLetter}");
-
+ 
 
 
 

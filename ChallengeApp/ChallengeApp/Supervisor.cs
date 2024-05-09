@@ -1,12 +1,10 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee : IEmployee
+    public class Supervisor : IEmployee
     {
-        public static string version = "Dzien#15";
-
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname, char sex)
+        public Supervisor(string name, string surname, char sex)
         {
             this.Name = name;
             this.Surname = surname;
@@ -35,23 +33,89 @@
 
         public void AddGrade(string grade)
         {
-            if (float.TryParse(grade, out float result))
-            {
-                this.AddGrade(result);
-            }
-            else
-            {
-                if (grade.Length == 1)
-                {
-                    AddGrade((char)grade[0]);
-                } 
-                else
-                {
-                    throw new Exception("String is not float");
-                }
 
-                
+            switch (grade)
+            {
+                case "6":
+                    AddGrade(100);
+                    break;
+
+                case "6-":
+                case "-6":
+                    AddGrade(95);
+                    break;
+
+                case "5+":
+                case "+5":
+                    AddGrade(85);
+                    break;
+
+                case "5":
+                    AddGrade(80);
+                    break;
+
+                case "5-":
+                case "-5":
+                    AddGrade(75);
+                    break;
+
+                case "4+":
+                case "+4":
+                    AddGrade(65);
+                    break;
+
+                case "4":
+                    AddGrade(60);
+                    break;
+
+                case "4-":
+                case "-4":
+                    AddGrade(55);
+                    break;
+
+                case "3+":
+                case "+3":
+                    AddGrade(45);
+                    break;
+
+                case "3":
+                    AddGrade(40);
+                    break;
+
+                case "3-":
+                case "-3":
+                    AddGrade(45);
+                    break;
+
+                case "2+":
+                case "+2":
+                    AddGrade(25);
+                    break;
+
+                case "2":
+                    AddGrade(20);
+                    break;
+
+                case "2-":
+                case "-2":
+                    AddGrade(25);
+                    break;
+
+                case "1+":
+                case "+1":
+                    AddGrade(5);
+                    break;
+
+                case "1":
+                case "1-":
+                case "-1":
+                    AddGrade(0);
+                    break;
+                default:
+                    throw new Exception("Mark should be between 6(max)...4+...3-... 1(min)");
             }
+
+            
         }
 
         public void AddGrade(char grade)
@@ -79,7 +143,7 @@
                     AddGrade(20);
                     break;
                 default:
-                    throw new Exception("Wrong Letter");                          
+                    throw new Exception("Wrong Letter");
             }
         }
 
@@ -120,7 +184,7 @@
 
             statistics.Avg /= this.grades.Count;
 
-            switch (statistics.Avg) 
+            switch (statistics.Avg)
             {
                 case var avg when avg >= 80:
                     statistics.AvgLetter = 'A';
