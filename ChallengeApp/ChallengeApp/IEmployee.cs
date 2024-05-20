@@ -16,10 +16,10 @@
 
         Statistics GetStatistics();
 
-        string Name { get;  }
+        string Name { get; }
 
-        string Surname { get;  }
+        string Surname { get; }
 
-        char Sex { get;  }
+
     }
 }
