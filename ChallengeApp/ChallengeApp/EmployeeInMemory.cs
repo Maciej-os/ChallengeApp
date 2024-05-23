@@ -1,29 +1,32 @@
 ﻿namespace ChallengeApp
 {
-    public class Employee : IEmployee
+    public class EmployeeInMemory : EmployeeBase
     {
-        public static string version = "Dzien#15";
+        public override event GradeAddedDelegate GradeAdded;
+
+        public static string version = "Dzien#17";
 
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname, char sex)
+        public EmployeeInMemory(string name, string surname) : base(name, surname)
         {
-            this.Name = name;
-            this.Surname = surname;
-            this.Sex = sex;
+
         }
 
-        public string Name { get; set; }
-
-        public string Surname { get; set; }
-
-        public char Sex { get; set; }
-
-        public void AddGrade(float grade)
+        private string ReturnMessage(string massage)
+        {
+            return massage;
+        }
+        public override void AddGrade(float grade)
         {
             if (grade >= 0 && grade <= 100)
             {
                 this.grades.Add(grade);
+
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs() );
+                }
             }
 
             else
@@ -33,7 +36,7 @@
 
         }
 
-        public void AddGrade(string grade)
+        public override void AddGrade(string grade)
         {
             if (float.TryParse(grade, out float result))
             {
@@ -54,53 +57,53 @@
             }
         }
 
-        public void AddGrade(char grade)
+        public override void AddGrade(char grade)
         {
             switch (grade)
             {
                 case 'A':
                 case 'a':
-                    AddGrade(100);
+                    AddGrade(100f);
                     break;
                 case 'B':
                 case 'b':
-                    AddGrade(80);
+                    AddGrade(80f);
                     break;
                 case 'C':
                 case 'c':
-                    AddGrade(60);
+                    AddGrade(60f);
                     break;
                 case 'D':
                 case 'd':
-                    AddGrade(40);
+                    AddGrade(40f);
                     break;
                 case 'E':
                 case 'e':
-                    AddGrade(20);
+                    AddGrade(20f);
                     break;
                 default:
                     throw new Exception("Wrong Letter");
             }
         }
 
-        public void AddGrade(double grade)
+        public override void AddGrade(double grade)
         {
             var value = (float)grade;
             this.AddGrade(value);
         }
 
-        public void AddGrade(long grade)
+        public override void AddGrade(long grade)
         {
             var value = (float)grade;
             this.AddGrade(value);
         }
-        public void AddGrade(decimal grade)
+        public override void AddGrade(decimal grade)
         {
             var value = (float)grade;
             this.AddGrade(value);
         }
 
-        public Statistics GetStatistics()
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
 
@@ -141,6 +144,5 @@
 
             return statistics;
         }
-
     }
 }

@@ -115,7 +115,7 @@
                     throw new Exception("Mark should be between 6(max)...4+...3-... 1(min)");
             }
 
-            
+
         }
 
         public void AddGrade(char grade)

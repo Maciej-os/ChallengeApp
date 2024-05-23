@@ -1,11 +1,10 @@
-﻿using System.Diagnostics;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace ChallengeApp
+﻿namespace ChallengeApp
 {
     public class EmployeeInFile : EmployeeBase
     {
-        public static string version = "Dzien#16";
+        public override event GradeAddedDelegate GradeAdded;
+
+        public static string version = "Dzien#17";
 
         private string fileName = "grades_V02.txt";
 
@@ -20,6 +19,11 @@ namespace ChallengeApp
                 using (var writer = File.AppendText(fileName))
                 {
                     writer.WriteLine(grade);
+                }
+
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
                 }
             }
 

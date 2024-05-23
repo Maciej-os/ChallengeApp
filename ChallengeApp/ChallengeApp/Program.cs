@@ -10,7 +10,15 @@ var name = Console.ReadLine();
 Console.WriteLine("Podaj nazwisko pracownika: ");
 var surname = Console.ReadLine();
 
-var employee01 = new EmployeeInFile(name, surname);
+//var employee01 = new EmployeeInFile(name, surname);
+var employee01 = new EmployeeInMemory(name, surname);
+
+employee01.GradeAdded += EmployeeGradeAdded;
+
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową ocenę");
+}
 
 while (true)
 {
@@ -18,7 +26,7 @@ while (true)
 
     var input = Console.ReadLine();
 
-    if (input == "q")
+    if (input == "q" || input == "Q")
     {
         break;
     }
