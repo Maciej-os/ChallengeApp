@@ -10,8 +10,8 @@ var name = Console.ReadLine();
 Console.WriteLine("Podaj nazwisko pracownika: ");
 var surname = Console.ReadLine();
 
-//var employee01 = new EmployeeInFile(name, surname);
-var employee01 = new EmployeeInMemory(name, surname);
+var employee01 = new EmployeeInFile(name, surname);
+//var employee01 = new EmployeeInMemory(name, surname);
 
 employee01.GradeAdded += EmployeeGradeAdded;
 
